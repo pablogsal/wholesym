@@ -1,11 +1,12 @@
+# Modified for the Stackpulse fork: package metadata and dependency aliases.
 [package]
-name = "samply-debugid"
+name = "samply-debugid-stackpulse"
 version = "0.1.0"
 authors = ["Markus Stange <mstange.moz@gmail.com>"]
 license = "MIT OR Apache-2.0"
 edition = "2021"
-description = "Samply compatible debugids."
-repository = "https://github.com/mstange/samply/"
+description = "Samply compatible debugids. (Stackpulse fork)"
+repository = "https://github.com/pablogsal/wholesym"
 readme = "README.md"
 
 [dependencies.debugid]
@@ -15,3 +16,6 @@ version = "0.8.0"
 [dependencies.uuid]
 default-features = false
 version = "1"
+
+[lib]
+name = "samply_debugid"

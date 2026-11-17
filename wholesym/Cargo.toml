@@ -1,13 +1,14 @@
+# Modified for the Stackpulse fork: package metadata and dependency aliases.
 [package]
-name = "wholesym"
-version = "0.8.1"
+name = "wholesym-stackpulse"
+version = "0.1.0"
 authors = ["Markus Stange <mstange.moz@gmail.com>"]
 edition = "2021"
 rust-version = "1.75" # needed by fs4
-description = "A complete solution for fetching symbol files and resolving code addresses to symbols and debuginfo."
+description = "A complete solution for fetching symbol files and resolving code addresses to symbols and debuginfo. (Stackpulse fork)"
 readme = "README.md"
-homepage = "https://github.com/mstange/samply/tree/main/wholesym"
-repository = "https://github.com/mstange/samply"
+homepage = "https://github.com/pablogsal/wholesym"
+repository = "https://github.com/pablogsal/wholesym"
 license = "MIT OR Apache-2.0"
 keywords = ["symbols", "profiling", "addr2line", "debuginfo"]
 
@@ -18,9 +19,9 @@ api = ["samply-api", "serde"]
 
 [dependencies]
 debugid = "0.8.0"
-samply-api = { version = "0.24.0", path = "../samply-api", features = ["send_futures"], optional = true }
-samply-debugid = { version = "0.1.0", path = "../samply-debugid" }
-samply-symbols = { version = "0.24.1", path = "../samply-symbols", features = ["send_futures"] }
+samply-api = { package = "samply-api-stackpulse", version = "=0.1.0", path = "../samply-api", features = ["send_futures"], optional = true }
+samply-debugid = { package = "samply-debugid-stackpulse", version = "=0.1.0", path = "../samply-debugid" }
+samply-symbols = { package = "samply-symbols-stackpulse", version = "=0.1.0", path = "../samply-symbols", features = ["send_futures"] }
 serde = { version = "1", optional = true }
 # symsrv = { path = "../../symsrv" }
 symsrv = "0.5.2"
@@ -54,3 +55,6 @@ core-foundation = "0.10"
 flate2 = { version = "1.1.2", features = ["zlib-rs"] }
 futures = "0.3.5"
 tokio = { version = "1.38", features = ["macros", "rt", "rt-multi-thread"] } # Features for #[tokio::test]
+
+[lib]
+name = "wholesym"

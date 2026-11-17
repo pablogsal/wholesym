@@ -1,12 +1,13 @@
+# Modified for the Stackpulse fork: package metadata and dependency aliases.
 [package]
-name = "samply-api"
-version = "0.24.0"
+name = "samply-api-stackpulse"
+version = "0.1.0"
 authors = ["Markus Stange <mstange.moz@gmail.com>"]
 license = "MIT OR Apache-2.0"
 edition = "2021"
 rust-version = "1.70" # needed by samply-symbols -> linux-perf-data -> prost-derive
-description = "JSON API for querying symbol information, uses samply-symbols."
-repository = "https://github.com/mstange/samply/"
+description = "JSON API for querying symbol information, uses samply-symbols. (Stackpulse fork)"
+repository = "https://github.com/pablogsal/wholesym"
 readme = "README.md"
 
 [features]
@@ -14,8 +15,8 @@ default = []
 send_futures = ["samply-symbols/send_futures"]
 
 [dependencies]
-samply-debugid = { version = "0.1.0", path = "../samply-debugid" }
-samply-symbols = { version = "0.24.1", path = "../samply-symbols" }
+samply-debugid = { package = "samply-debugid-stackpulse", version = "=0.1.0", path = "../samply-debugid" }
+samply-symbols = { package = "samply-symbols-stackpulse", version = "=0.1.0", path = "../samply-symbols" }
 thiserror = "2"
 serde = "1.0.204"
 serde_derive = "1.0.188"
@@ -29,3 +30,6 @@ memmap2 = "0.9.9"
 anyhow = "1"
 futures = "0.3.5"
 assert-json-diff = "2.0.1"
+
+[lib]
+name = "samply_api"

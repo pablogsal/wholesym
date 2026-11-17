@@ -1,3 +1,9 @@
+Stackpulse fork of [mstange/samply](https://github.com/mstange/samply) at `1920bd32c569de5650d1129eb035f43bd28ace27`.
+The Rust source and API names are unchanged. The registry names use the `-stackpulse` suffix.
+See [fork maintenance](https://github.com/pablogsal/wholesym/blob/main/FORK.md).
+
+---
+
 # wholesym
 
 `wholesym` is a fully-featured library for fetching symbol files and for

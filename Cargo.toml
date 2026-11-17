@@ -1,24 +1,10 @@
+# Modified for the Stackpulse fork: publish only the symbol libraries.
 [workspace]
 resolver = "2"
-default-members = ["samply"]
-members = [
-    "fxprof-processed-profile",
-    "gecko_profile",
-    "samply-api",
-    "samply-debugid",
-    "samply-object",
-    "samply-quota-manager",
-    "samply-symbols",
-    "samply",
-    "wholesym",
-    "wholesym-addr2line",
-    "tools/benchmarks",
-    "tools/dump_table",
-    "tools/query_api"
-]
-exclude = ["etw-reader"] # Should not be compiled on non-Windows
+members = ["samply-debugid", "samply-object", "samply-symbols", "samply-api", "wholesym"]
+default-members = ["samply-debugid", "samply-object", "samply-symbols", "samply-api", "wholesym"]
+exclude = ["etw-reader", "fxprof-processed-profile", "gecko_profile", "samply", "samply-quota-manager", "tools/benchmarks", "tools/dump_table", "tools/query_api", "wholesym-addr2line"]
 
-# The profile that 'cargo dist' will build with
 [profile.dist]
 inherits = "release"
 lto = "thin"

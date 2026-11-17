@@ -1,11 +1,12 @@
+# Modified for the Stackpulse fork: package metadata and dependency aliases.
 [package]
-name = "samply-object"
+name = "samply-object-stackpulse"
 version = "0.1.0"
 authors = ["Markus Stange <mstange.moz@gmail.com>"]
 license = "MIT OR Apache-2.0"
 edition = "2021"
-description = "Samply object functions."
-repository = "https://github.com/mstange/samply/"
+description = "Samply object functions. (Stackpulse fork)"
+repository = "https://github.com/pablogsal/wholesym"
 readme = "README.md"
 
 [dependencies.debugid]
@@ -22,4 +23,6 @@ default-features = false
 version = "1"
 
 [dependencies]
-samply-debugid = { version = "0.1.0", path = "../samply-debugid" }
+samply-debugid = { package = "samply-debugid-stackpulse", version = "=0.1.0", path = "../samply-debugid" }
+[lib]
+name = "samply_object"

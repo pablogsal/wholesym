@@ -1,0 +1,41 @@
+name: Fork
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, macos-15]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    env:
+      CARGO_PROFILE_DEV_DEBUG: "0"
+      CARGO_PROFILE_TEST_DEBUG: "0"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Install Rust
+        run: rustup update stable
+      - name: Check fork metadata and source
+        run: |
+          python3 fork/prepare.py --check
+          upstream=$(python3 -c 'import tomllib; print(tomllib.load(open("fork/config.toml", "rb"))["upstream"])')
+          git diff --exit-code "$upstream" -- '*.rs'
+      - name: Check default features
+        run: cargo check --workspace --locked
+      - name: Run upstream tests
+        run: cargo test --workspace --all-features --locked
+      - name: Check registry packages
+        if: runner.os == 'Linux'
+        run: cargo publish --workspace --dry-run --locked

@@ -1,0 +1,3 @@
+upstream = "1920bd32c569de5650d1129eb035f43bd28ace27"
+version = "0.1.0"
+repository = "https://github.com/pablogsal/wholesym"
