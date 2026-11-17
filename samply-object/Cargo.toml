@@ -16,7 +16,7 @@ version = "0.8.0"
 [dependencies.object]
 default-features = false
 features = ["read_core"]
-version = "0.39"
+version = "0.41"
 
 [dependencies.uuid]
 default-features = false
